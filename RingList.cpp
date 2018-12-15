@@ -47,44 +47,25 @@ class ring{
 		ptr -> next = temp;
 		temp -> next = head;
 	}
-	void insert()
-	{
-		cout << "Enter value where to add "<<endl;
-		cin >> key;
-		temp = head;
-		if (temp -> info == key)
-		{
-			ptr = temp;
-			temp = new node;
-			cout << "Enter value "<<endl;
-			cin >> temp -> info;
-			head = temp;
+void insert(){
+			temp = head;
+			cout << "Enter value After witch the num is be added" << endl;
+			int key;
+			cin >> key;
+			do{
+				if(temp->info == key){
+					ptr = temp;
+					temp = new node;
+					cout << "Enter value" <<endl;
+					cin >> temp->info;
+					temp->next = ptr->next;
+					ptr->next = temp;
+					
+				}
+				temp = temp->next;
+			}while(temp != head);
 		}
-		temp = head -> next;
-		while (temp != head)
-		{
-			if (temp -> info == key)
-			{
-				ptr = temp;
-				temp = new node;
-				cout << "Enter value "<<endl;
-				cin >> temp -> info;
-				temp -> next = ptr -> next;
-				ptr -> next = temp;
-				return;
-			}
-			temp = temp -> next;
-		}
-		if (temp -> info == key)
-		{
-//			ptr = temp;
-			ptr = new node;
-			ptr -> next = head;
-			temp -> next = ptr;
-//			ptr = temp;
-			return;
-		}
-	}	
+		
 	void print()
 	{
 		temp = head -> next;
@@ -102,33 +83,29 @@ class ring{
 		cout << "Enter values to remove " <<endl;
 		cin >> key;
 		temp = head;
-		if (head -> info == key)
-		{
-			head = head -> next;
-			delete temp;
-			temp = NULL;
-			return;
-		}
-		temp = head -> next;
-		while (temp != head)
-		{
-			if (temp -> next -> info == key)
-			{
-				ptr = temp -> next;
-				temp -> next = ptr -> next;
-				delete ptr;
-				ptr = NULL;
+			if(head == NULL){
+				cout << "No value in Link list" << endl;
 			}
-			temp = temp -> next;
+			else{
+				do{
+					if(key == temp->next->info && temp->next->info == head->info){
+						ptr = head;
+						head = head->next;
+						temp->next = head;
+						delete ptr;
+						ptr = NULL;
+					}
+					else if(temp->next->info == key){
+						ptr = temp->next;
+						temp->next = ptr->next;
+						delete ptr;
+						ptr = NULL;
+					}
+					temp = temp->next;
+				}
+				while(temp != head);
+			}
 		}
-		if (temp ->next -> info == key)
-		{
-			ptr = temp -> next;
-			temp -> next = head;
-			delete ptr;
-			ptr = NULL;
-		}
-	}
 };
 
 int main()
