@@ -242,14 +242,14 @@ class bst
 				 }
 
 				// Case#3
-				 if(temp->left->left != NULL && temp->left->right != NULL){
+				if(temp->left->left != NULL && temp->left->right != NULL){
 					temp1 = temp->left;
 				 	temp2 = temp1->right;
-				 	current = temp2;
+				 	 current = temp2;
 				 	if(temp2->left != NULL)
 				 	{
-				 		current = temp->left;
-						while (current->left !=NULL){
+				 		current = temp2->left;
+						while (current->left !=NULL){  // finding immediate predecessor
 						    temp2 = temp2->left;
 						    current = temp2->left;
 						}
@@ -258,14 +258,14 @@ class bst
 					cout <<"Current  "<< current->info <<endl;
 				 	if(current->right == NULL) 			// find immediate successor having no child
 				 	{
-					swap = current->info;
-			 		current->info = temp1->info;
-			 		temp1->info = swap;
-			 		temp1->right = NULL;
-//				 	temp2->right = NULL;
-				 	delete current;
-					current = NULL;
-			 		return;
+				 		cout << "ok" << endl;
+						swap = current->info;
+				 		current->info = temp1->info;
+				 		temp1->info = swap;
+				 	//	temp1->right = NULL;
+						delete temp2->left;
+						temp2->left = NULL;
+				 		return;
 			 		}
 			 		if(current->right != NULL){ 	// find immediate successor having right child
 				 		cout <<"aya"<<endl;
