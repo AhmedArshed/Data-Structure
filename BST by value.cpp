@@ -86,49 +86,48 @@ class bst
 			temp = root;
 				 if(temp->right == NULL && temp->left == NULL)
 				 {
-				 	delete temp->right;
-				 	temp->right = NULL;
+				 	delete root;
+				 	root = NULL;
 				 	return;
 				 }
 				 if(temp->right == NULL && temp->left != NULL)
 				 {
-				 	temp1 = temp->right;
-				 	temp = temp1->left;
+				 	temp1 = root;
+				 	root = root->left;
 				 	delete temp1;
 				 	temp1= NULL;
 				 	return;
 				 }
 				 if(temp->right != NULL && temp->left == NULL)
 				 {
-				 	temp1 = temp->left;
-				 	temp= temp1->right;
+				 	temp1 = root;
+				 	root = root->right;
 				 	delete temp1;
 				 	temp1 = NULL;
 				  	return;
 				 }
 				 if(temp->right != NULL && temp->left != NULL){
-				 	temp1 = temp->right;
-				 	current = temp1;
+				cout << "Ook "<<endl;
+					 	temp1 = root->right;
+					 	current = temp1;
 				 	if(temp1->left != NULL)
 				 	{
 				 		current = temp1->left;
-						while (current->left!= NULL){
+						while (current->left != NULL){
 						    temp1 = temp1->left;
-						    current = temp1->left;
+						    current = current->left;
 						}
 				 	}
 						cout <<"Current  "<< current->info <<endl;
 				 	if(current->right == NULL) 			// find immediate successor having no child
 				 	{
-				 	cout <<"aya"<<endl;
-					swap = current->info;
-			 		current->info = temp->info;
-			 		temp->info = swap;
-			 		temp1->left = NULL;
-//				 	temp2->right = NULL;
-				 	delete current;
-					current = NULL;
-			 		return;
+					 	cout <<"aya"<<endl;
+						swap = current->info;
+			 			current->info = root->info;
+			 			root->info = swap;
+			 			delete temp1->left;
+				 		temp1->left = NULL;
+				 		return;
 			 		}
 			 		if(current->right != NULL){ 	// find immediate successor having right child
 				 		swap = current->info;
