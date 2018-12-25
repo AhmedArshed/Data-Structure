@@ -189,6 +189,21 @@ void delete_max()
       }
       cout << endl;
     }
+void fourth_eliment()
+	{
+		temp = head;
+		if(temp->next != NULL)
+			if(temp->next->next != NULL)
+				if(temp->next->next->next != NULL)
+					if(temp->next->next->next->next != NULL)
+					ptr = temp->next->next->next->next;
+		while(ptr != NULL){
+			temp = temp->next;
+			ptr = ptr->next;
+		}
+		cout <<endl<< "Fourth value from end is :";
+		cout << temp->info <<endl;
+	}
 };
 
 
