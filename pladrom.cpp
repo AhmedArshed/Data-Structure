@@ -1,51 +1,66 @@
-#include<iostream>
+#include <iostream>
+#include<stdio.h>
 using namespace std;
 
-class pa{
+class palindrome{
 	private:
-		int size;
-		string a;
-		char *ptr;
-		char *temp;
-		char *end;
-		char *array;
+		
 	public:
-		pa(){
+		char * start;
+		char * last;
+		char * array;
+		char *temp;
+		char value;
+		int size;
+	public:
+		palindrome(){
+			start = NULL;
+			last  = NULL;
 			size = 0;
-			ptr = temp = end = NULL;
-			cout << "Enter string to check paladrom"<<endl;
-			cin >>a;
-			size = a.length(); 
-			array = new char[size];
-			ptr = array;
-			for(int i = 0 ; i < size ; i++)
-			{
-				*array = a[i];
-				array++;
+			array = new char[1000];
+			temp = array;
+			for(int i = 1;i<1000; i++){
+				cout << "Enter the value: " << endl;
+				cin >> *temp;
+				temp++;
+				
+				cout << "enter the value: Y" << " otherwise: N" << endl ;
+				cin >> value;
+				if(value == 'y'){
+					continue;
+				}
+				else{
+					break;
+				}
 			}
-			end = array;
-		}
-		~pa(){
-			delete [] array;
-		}
-	void paladrom(){
 			
-		for(int i = 0; i < size/2 + 1; i++){
-		if(*ptr == *end){
-			ptr++;
-			end--;
 		}
-		else{
-			cout <<"not";
-			return;
+		void checkingpalindrome()
+		{
+			start  = array;
+			last = array;
+			while(*last != '\0'){
+				last++;
+				size++;
+			
+			}
+			last--;
+			for(int i = 1; i <= size/2 + 1 ; i++){
+				if(*start == *last){
+				start++;
+				last--; 
+			}
+				else{
+					cout << "it is not palindrome:"<<endl;
+					return;
+				}
+						
 		}
-	}
-	cout << "Yes"<<endl;
-	}
+				cout << "It is Palindrome:"<<endl;
+		
+		}
 };
-
-int main()
-{
-	pa p;
-	p.paladrom();
+int main(){
+	palindrome pald;
+	pald.checkingpalindrome();
 }
